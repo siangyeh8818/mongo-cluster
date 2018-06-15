@@ -4,15 +4,19 @@ mongodb1=`getent hosts ${MONGO1} | awk '{ print $1 }'`
 mongodb2=`getent hosts ${MONGO2} | awk '{ print $1 }'`
 mongodb3=`getent hosts ${MONGO3} | awk '{ print $1 }'`
 
-echo 'mongodb1 = ${mongodb1}'
-echo 'mongodb2 = ${mongodb2}'
-echo 'mongodb3 = ${mongodb3}'
-
+echo "mongodb1 = ${mongodb1}"
+echo "mongodb2 = ${mongodb2}"
+echo "mongodb3 = ${mongodb3}"
+echo "--------------------------"
+echo $mongodb1
+echo $mongodb2
+echo $mongodb3
+echo "--------------------------"
 port=${PORT:-27017}
 
-echo 'port =${port}'
-echo 'id value =${RS}'
-
+echo "port =${port}"
+echo "id value =${RS}"
+echo "--------------------------"
 #echo "Waiting for startup.."
 #until mongo --host ${mongodb1}:${port} --eval 'quit(db.runCommand({ ping: 1 }).ok ? 0 : 2)' &>/dev/null; do
 #  printf '.'
