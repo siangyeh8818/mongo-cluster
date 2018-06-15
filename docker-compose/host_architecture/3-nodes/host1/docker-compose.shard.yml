@@ -6,5 +6,5 @@ services:
         network_mode: "host"
         ports:
             - "27017:27017"
-        command: mongod --replSet rs1 --shardsvr --bind_ip 172.16.106.130 --cpu --port 27017 --nojournal --oplogSize 16 --noprealloc --smallfiles
+        command: mongod --replSet rs1 --shardsvr --bind_ip 0.0.0.0 --cpu --port 27017 --nojournal --oplogSize 16 --noprealloc --smallfiles
         restart: always
