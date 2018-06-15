@@ -1,6 +1,6 @@
 version: '2'
 services:
-    mongo-1-1:
+    mongo-1-2:
         container_name: "mongo-1-2"
         image: mongo:test
         network_mode: "host"
