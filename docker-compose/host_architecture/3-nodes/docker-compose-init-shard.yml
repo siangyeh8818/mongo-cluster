@@ -2,7 +2,7 @@ version: '2'
 services:
     mongo-rs1-setup:
         container_name: "mongo-rs1-setup"
-        image: mongo:test-3
+        image: mongo:test-5
         network_mode: "host"
 #        depends_on:
 #            - "mongo-1-1"
