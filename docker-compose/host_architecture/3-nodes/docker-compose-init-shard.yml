@@ -2,7 +2,7 @@ version: '2'
 services:
     mongo-rs1-setup:
         container_name: "mongo-rs1-setup"
-        image: mongo:test
+        image: mongo:test-2
 #        depends_on:
 #            - "mongo-1-1"
 #            - "mongo-1-2"
