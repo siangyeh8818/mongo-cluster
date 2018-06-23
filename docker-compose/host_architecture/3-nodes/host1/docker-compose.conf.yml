@@ -1,0 +1,13 @@
+version: '2'
+services:
+    mongo-cnf-1:
+        container_name: "mongo-cnf-1"
+        image: mongo:test
+        ports:
+            - "27018:27018"
+        command: mongod --replSet cnf-serv --rest --configsvr --port 27018 --oplogSize 16 --noprealloc --smallfiles
+#        links:
+#            - mongo-cnf-2:mongo-cnf-2
+#            - mongo-cnf-3:mongo-cnf-3
+        restart: always
+

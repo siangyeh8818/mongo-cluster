@@ -1,0 +1,20 @@
+version: '2'
+services:
+    mongo-cnf-setup:
+        container_name: "mongo-cnf-setup"
+        image: mongo:test
+        depends_on:
+            - "mongo-cnf-1"
+            - "mongo-cnf-2"
+            - "mongo-cnf-3"
+        links:
+            - mongo-cnf-1:mongo-cnf-1
+            - mongo-cnf-2:mongo-cnf-2
+            - mongo-cnf-3:mongo-cnf-3
+        environment:
+            - MONGO1=172.16.106.130
+            - MONGO2=172.16.106.131
+            - MONGO3=172.16.106.132
+            - RS=cnf-serv
+            - PORT=27018
+        entrypoint: [ "/scripts/setup-cnf.sh" ]
