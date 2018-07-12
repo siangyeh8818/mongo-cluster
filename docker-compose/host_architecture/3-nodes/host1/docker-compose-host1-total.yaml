@@ -1,0 +1,33 @@
+version: '2'
+services:
+    mongo-1-1:
+        container_name: "mongo-1-1"
+        image: mongo:test
+        network_mode: "host"
+        ports:
+            - "27017:27017"
+        command: mongod --replSet rs1 --shardsvr --bind_ip 0.0.0.0 --cpu --port 27017 --nojournal --oplogSize 16 --noprealloc --smallfiles
+        restart: always
+
+    mongo-cnf-1:
+        container_name: "mongo-cnf-1"
+        image: mongo:test
+        network_mode: "host"
+        ports:
+            - "27018:27018"
+        command: mongod --replSet cnf-serv --rest --configsvr --port 27018 --oplogSize 16 --noprealloc --smallfiles
+        restart: always
+        depends_on:
+        - "mongo-1-1"
+
+    mongo-router:
+        container_name: "mongo-router"
+        image: mongo:test
+        network_mode: "host"
+        ports:
+            - "27019:27019"
+        command: mongos --port 27019 --configdb cnf-serv/172.16.106.130:27018,172.16.106.131:27018,172.16.106.132:27018
+        restart: always
+        depends_on:
+        - "mongo-1-1"
+        - "mongo-cnf-1"
