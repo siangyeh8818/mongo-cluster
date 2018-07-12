@@ -1,0 +1,42 @@
+version: '2'
+services:
+    mongo-rs1-setup:
+        container_name: "mongo-rs1-setup"
+        image: mongo:cluster-init-v4
+        network_mode: "host"
+        environment:
+            - MONGO1=172.16.106.130
+            - MONGO2=172.16.106.131
+            - MONGO3=172.16.106.132
+            - RS=rs1
+        entrypoint: [ "/scripts/setup.sh" ]
+
+    mongo-cnf-setup:
+        container_name: "mongo-cnf-setup"
+        image: mongo:cluster-init-v4
+        network_mode: "host"
+        environment:
+            - MONGO1=172.16.106.130
+            - MONGO2=172.16.106.131
+            - MONGO3=172.16.106.132
+            - RS=cnf-serv
+            - PORT=27018
+        entrypoint: [ "/scripts/setup-cnf.sh" ]
+
+    mongo-shard-setup:
+        container_name: "mongo-shard-setup"
+        image: mongo:cluster-init-v4
+        network_mode: "host"
+        environment:
+            - MONGOS1=172.16.106.130
+            - MONGOS2=172.16.106.131
+            - MONGOS3=172.16.106.132
+            - MONGO11=172.16.101.130
+            - MONGO12=172.16.101.131
+            - MONGO13=172.16.101.132
+            - RS1=rs1
+            - PORT=27019
+            - PORT1=27017
+            - PORT2=27017
+            - PORT3=27017
+        entrypoint: [ "/scripts/init-shard.sh" ]

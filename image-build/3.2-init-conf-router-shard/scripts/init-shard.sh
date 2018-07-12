@@ -19,7 +19,10 @@ mongodb13=${MONGO13}
 #mongodb32=`getent hosts ${MONGO32} | awk '{ print $1 }'`
 #mongodb33=`getent hosts ${MONGO33} | awk '{ print $1 }'`
 
-port=${PORT:-27017}
+#port=${PORT:-27017}
+port=${PORT}
+echo "sleep 20 seconds...."
+sleep 20s 
 
 #echo "Waiting for startup.."
 #until mongo --host ${mongodb1}:${port} --eval 'quit(db.runCommand({ ping: 1 }).ok ? 0 : 2)' &>/dev/null; do
