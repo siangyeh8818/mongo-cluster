@@ -1,13 +1,10 @@
 #!/bin/bash 
 
-#mongodb1=`getent hosts ${MONGO1} | awk '{ print $1 }'`
-#mongodb2=`getent hosts ${MONGO2} | awk '{ print $1 }'`
-#mongodb3=`getent hosts ${MONGO3} | awk '{ print $1 }'`
-mongodb1=${MONGO1}
-mongodb2=${MONGO2}
-mongodb3=${MONGO3}
+mongodb1=`getent hosts ${MONGO1} | awk '{ print $1 }'`
+mongodb2=`getent hosts ${MONGO2} | awk '{ print $1 }'`
+mongodb3=`getent hosts ${MONGO3} | awk '{ print $1 }'`
 
-port=${PORT:-27018}
+port=${PORT:-27017}
 
 #echo "Waiting for startup.."
 #until mongo --host ${mongodb1}:${port} --eval 'quit(db.runCommand({ ping: 1 }).ok ? 0 : 2)' &>/dev/null; do

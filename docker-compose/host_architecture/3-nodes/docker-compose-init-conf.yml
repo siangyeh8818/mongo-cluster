@@ -2,7 +2,7 @@ version: '2'
 services:
     mongo-cnf-setup:
         container_name: "mongo-cnf-setup"
-        image: mongo:conf-init
+        image: mongo:conf-init-v2
         network_mode: "host"
 #        depends_on:
 #            - "mongo-cnf-1"

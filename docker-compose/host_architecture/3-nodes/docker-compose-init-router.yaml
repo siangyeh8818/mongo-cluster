@@ -1,0 +1,27 @@
+version: '2'
+services:
+    mongo-shard-setup:
+        container_name: "mongo-shard-setup"
+        image: mongo:init-router
+        network_mode: "host"
+#        depends_on:
+#            - "mongo-router"
+#        links:
+#            - mongo-router:mongo-router
+        environment:
+            - MONGOS1=172.16.106.130
+            - MONGOS2=172.16.106.131
+            - MONGOS3=172.16.106.132
+            - MONGO11=172.16.101.130
+            - MONGO12=172.16.101.131
+            - MONGO13=172.16.101.132
+#            - MONGO21=mongo-2-1
+#            - MONGO22=mongo-2-2
+#            - MONGO23=mongo-2-3
+            - RS1=rs1
+#            - RS2=rs2
+            - PORT=27019
+            - PORT1=27017
+            - PORT2=27017
+            - PORT3=27017
+        entrypoint: [ "/scripts/init-shard.sh" ]

@@ -1,0 +1,11 @@
+version: '2'
+services:
+    mongo-router:
+        container_name: "mongo-router"
+        image: mongo:test
+        network_mode: "host"
+        ports:
+            - "27019:27019"
+        command: mongos --port 27019 --configdb cnf-serv/172.16.106.130:27018,172.16.106.131:27018,172.16.106.132:27018
+        restart: always
+
